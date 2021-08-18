@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login
   before_action :set_user, only: [:show, :update, :destroy]
-
+  
   # GET /users
   def index
-    @users = User.all
+    users = User.all
 
-    render json: @users
+    render json: users
   end
 
   # GET /users/1
@@ -15,12 +16,13 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
-
-    if @user.save
-      render json: @user, status: :created, location: @user
+    user = User.create(user_params)
+    if user.valid?
+        payload = {user_id: user.id}
+        token = encode_token(payload)
+        render json: {user: UserSerializer.new(user), jwt: token}, status: :created
     else
-      render json: @user.errors, status: :unprocessable_entity
+        render json: {errors: user.errors.full_messages}, status: :not_acceptable
     end
   end
 
@@ -46,6 +48,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:firstName, :lastName, :company, :bio, :email, :password_digest, :picture)
+      params.require(:user).permit(:firstName, :lastName, :company, :bio, :email, :password_digest, :picture, :password)
     end
 end
