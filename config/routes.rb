@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :connections
-  resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # resources :connections
+  # resources :users
+  resources :users, only: [:create, :index] #handle signup, query users
+  post '/login', to: "auth#login" #handles login for exisiting users
+  get '/auto_login', to: "auth#auto_login" #handles auto login when user revisits
 end
