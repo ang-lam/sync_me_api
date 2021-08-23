@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-    has_many :mentors, foreign_key: :mentor_id, class_name: "Connection"
-    has_many :mentees, through: :mentors
-    has_many :mentees, foreign_key: :mentee_id, class_name: "Connection"
-    has_many :mentors, through: :mentees
+    has_many :followers, foreign_key: :follower_id , class_name: "Connection"
+    has_many :followed, through: :followers
+    has_many :followed, foreign_key: :followed_id, class_name: "Connection"
+    has_many :followers, through: :followed
 
     has_secure_password
     validates :email, uniqueness: {case_sensitive: false}

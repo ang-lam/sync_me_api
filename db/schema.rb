@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_061558) do
+ActiveRecord::Schema.define(version: 2021_08_23_082133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "connections", force: :cascade do |t|
-    t.integer "mentor_id"
-    t.integer "mentee_id"
+    t.integer "followed_id"
+    t.integer "follower_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
