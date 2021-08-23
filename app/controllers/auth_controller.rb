@@ -4,9 +4,12 @@ class AuthController < ApplicationController
     def login
         user = User.find_by(email: login_params[:email])
         if user && user.authenticate(login_params[:password])
+            mentors = Connection.all.select{ |c| c.mentee_id == user.id}
             payload = {user_id: user.id}
             token = encode_token(payload)
             render json: {user: user, jwt: token}, status: :accepted
+            # render json: UserSerializer.new(user)
+            # render json: user.to_json(:include => [:mentors, :mentees])
         else
             render json: {failure: "Invalid email or password"}, status: :unauthorized
         end
