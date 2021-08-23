@@ -4,7 +4,6 @@ class AuthController < ApplicationController
     def login
         user = User.find_by(email: login_params[:email])
         if user && user.authenticate(login_params[:password])
-            mentors = Connection.all.select{ |c| c.mentee_id == user.id}
             payload = {user_id: user.id}
             token = encode_token(payload)
             render json: {user: user, jwt: token}, status: :accepted
