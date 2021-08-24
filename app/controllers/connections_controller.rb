@@ -1,10 +1,11 @@
 class ConnectionsController < ApplicationController
   before_action :set_connection, only: [:show, :update, :destroy]
+  skip_before_action :require_login, only: [:login, :index]
 
   # GET /connections
   def index
     connections = Connection.all
-
+ 
     render json: connections
   end
 
