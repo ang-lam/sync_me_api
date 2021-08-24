@@ -1,6 +1,6 @@
 class ConnectionsController < ApplicationController
   before_action :set_connection, only: [:show, :update, :destroy]
-  skip_before_action :require_login, only: [:index]
+  skip_before_action :require_login, only: [:index, :create]
 
   # GET /connections
   def index
