@@ -3,9 +3,9 @@ class ConnectionsController < ApplicationController
 
   # GET /connections
   def index
-    @connections = Connection.all
+    connections = Connection.all
 
-    render json: @connections
+    render json: connections
   end
 
   # GET /connections/1
@@ -46,6 +46,6 @@ class ConnectionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def connection_params
-      params.require(:connection).permit(:mentor_id, :mentee_id)
+      params.require(:connection).permit(:followed_id, :follower_id)
     end
 end
