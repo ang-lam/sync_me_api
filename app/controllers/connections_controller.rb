@@ -16,12 +16,13 @@ class ConnectionsController < ApplicationController
 
   # POST /connections
   def create
-    @connection = Connection.new(connection_params)
+    connection = Connection.new(connection_params)
 
-    if @connection.save
-      render json: @connection, status: :created, location: @connection
+    if connection.save
+      render json: connection
+      # render json: connection, status: :created, location: connection
     else
-      render json: @connection.errors, status: :unprocessable_entity
+      render json: connection.errors, status: :unprocessable_entity
     end
   end
 
