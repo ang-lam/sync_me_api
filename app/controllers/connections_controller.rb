@@ -1,6 +1,6 @@
 class ConnectionsController < ApplicationController
   before_action :set_connection, only: [:show, :update, :destroy]
-  skip_before_action :require_login, only: [:index, :create]
+  skip_before_action :require_login, only: [:index, :create, :delete]
 
   # GET /connections
   def index
@@ -36,10 +36,13 @@ class ConnectionsController < ApplicationController
     end
   end
 
-  # DELETE /connections/1
-  def destroy
-    @connection.destroy
-    render json: {message: 'You have successfully unfollowed!'}
+  # DELETE /delete_connection
+  def delete
+    # connection = Connection.find(followed_id: butoon, follower_id: currentUser)
+    #find connection with follower and followed ID to find the connection and delete it
+    connection = Connection.find_by(followed_id: connection_params[:followed_id], follower_id: connection_params[:follower_id])
+    connection.destroy
+    render json: {unfollowed_id: connection_params[:followed_id], message: 'You have successfully unfollowed!'}
   end
 
   private
