@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   # resources :connections
   # resources :users
   resources :users, only: [:create, :index, :show] #handle signup, query users
