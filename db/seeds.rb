@@ -17,4 +17,4 @@ User.create(firstName: 'Emily', lastName: 'Lee', company: 'Facebook', bio: 'Two 
 
 anna = User.create(firstName: 'Anna', lastName: 'Kim', company: 'Google', bio: 'Senior developer at Google. Excited to talk to new faces!', role: 'mentor', email: 'anna@email.com', password: '123456')
 
-Connection.create(follower_id: anna.id, following_id: angela.id)
+Connection.create(follower_id: anna.id, followed_id: angela.id)

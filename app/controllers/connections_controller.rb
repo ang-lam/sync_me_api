@@ -17,9 +17,10 @@ class ConnectionsController < ApplicationController
   # POST /connections
   def create
     connection = Connection.new(connection_params)
+    followed_user = User.find_by(id: connection.followed_id)
 
     if connection.save
-      render json: connection
+      render json: {connection: connection, user: followed_user}
       # render json: connection, status: :created, location: connection
     else
       render json: connection.errors, status: :unprocessable_entity
@@ -38,6 +39,7 @@ class ConnectionsController < ApplicationController
   # DELETE /connections/1
   def destroy
     @connection.destroy
+    render json: {message: 'You have successfully unfollowed!'}
   end
 
   private
