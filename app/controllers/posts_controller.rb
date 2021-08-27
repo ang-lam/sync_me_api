@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
 
     if post.save
-      render json: post
+      render json: post, include: :user
       # render json: connection, status: :created, location: connection
     else
       render json: post.errors, status: :unprocessable_entity
