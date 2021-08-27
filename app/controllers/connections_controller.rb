@@ -20,7 +20,7 @@ class ConnectionsController < ApplicationController
     followed_user = User.find_by(id: connection.followed_id)
 
     if connection.save
-      render json: {connection: connection, user: followed_user}
+      render json: {connection: connection, user: followed_user, message: 'You have successfully followed!'}
       # render json: connection, status: :created, location: connection
     else
       render json: connection.errors, status: :unprocessable_entity
