@@ -29,7 +29,7 @@ Post.create(user_id: bob.id, content: "Don't hesitate to reach out to me and cha
 
 Post.create(user_id: anna.id, content: "I'm enjoying all the new people sync-ing with me! :)")
 
-Post.creat(user_id: emily.id, content: "Lowkey nervous to connect to random people I don't know, but I'll connect to as many people as I can!")
+Post.create(user_id: emily.id, content: "Lowkey nervous to connect to random people I don't know, but I'll connect to as many people as I can!")
 
 Post.create(user_id: thomas.id, content: "First post for me. I don't know what to say lol")
 
