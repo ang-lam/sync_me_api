@@ -38,3 +38,7 @@ Post.create(user_id: angela.id, content: "I love this site!")
 Post.create(user_id: emily.id, content: "Does anyone want to be my mentor?")
 
 Post.create(user_id: bob.id, content: "Today has been a stressful day. I keep running into bug after bug.")
+
+Message.create(sender_id: a.id, recipient_id: b.id, content: "Messaging working?")
+
+Message.create(sender_id: bob.id, recipient_id: angela.id, content: "Yes!")
