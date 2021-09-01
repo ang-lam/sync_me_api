@@ -4,9 +4,9 @@ class MessagesController < ApplicationController
 
   # GET /messages
   def index
-    @messages = Message.all
+    messages = Message.all
 
-    render json: @messages
+    render json: messages, include: [:sender, :recipient]
   end
 
   # GET /messages/1
