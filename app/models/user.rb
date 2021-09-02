@@ -12,14 +12,6 @@ class User < ApplicationRecord
     has_many :received_messages, foreign_key: :recipient_id, class_name: "Messages"
     has_many :recipients, through: :received_messages
 
- 
-    # has_many :received_messages, foreign_key: :recipient_id, class_name: "Message"
-    # has_many :received_messages, through: :received_messages
-    # has_many :sent_messages, foreign_key: :sender_id, class_name: "Message"
-    # has_many :sent_messages, through: :sent_messages
-    #need to work on associations
-
-
     has_secure_password
     validates :email, uniqueness: {case_sensitive: false}
     validates :username, uniqueness: true
