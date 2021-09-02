@@ -1,5 +1,4 @@
 class ConnectionsController < ApplicationController
-  before_action :set_connection, only: [:show, :update, :destroy]
   skip_before_action :require_login, only: [:index, :create, :delete]
 
   # GET /connections
@@ -7,11 +6,6 @@ class ConnectionsController < ApplicationController
     connections = Connection.all
  
     render json: connections
-  end
-
-  # GET /connections/1
-  def show
-    render json: @connection
   end
 
   # POST /connections
@@ -27,30 +21,14 @@ class ConnectionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /connections/1
-  def update
-    if @connection.update(connection_params)
-      render json: @connection
-    else
-      render json: @connection.errors, status: :unprocessable_entity
-    end
-  end
-
   # DELETE /delete_connection
   def delete
-    # connection = Connection.find(followed_id: butoon, follower_id: currentUser)
-    #find connection with follower and followed ID to find the connection and delete it
     connection = Connection.find_by(followed_id: connection_params[:followed_id], follower_id: connection_params[:follower_id])
     connection.destroy
     render json: {unfollowed_id: connection_params[:followed_id], message: 'You have successfully unfollowed!'}
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_connection
-      @connection = Connection.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def connection_params
       params.require(:connection).permit(:followed_id, :follower_id)
