@@ -7,17 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-angela = User.create(firstName: 'Angela', lastName: 'Lam', company: 'Microsoft', bio: 'New to the tech field! Would love to connect with SWEs with more experience!', email: 'angela@email.com', password: '123456')
+angela = User.create(username: 'anglam', firstName: 'Angela', lastName: 'Lam', company: 'Microsoft', bio: 'New to the tech field! Would love to connect with SWEs with more experience!', email: 'angela@email.com', password: '123456')
 
-bob = User.create(firstName: 'Bob', lastName: 'Smit', company: 'Amazon', bio: 'Five years as a SWE. Happy to share my knowledge!', email: 'bob@email.com', password: '123456')
+bob = User.create(username: 'bobsmit', firstName: 'Bob', lastName: 'Smit', company: 'Amazon', bio: 'Five years as a SWE. Happy to share my knowledge!', email: 'bob@email.com', password: '123456')
 
-thomas = User.create(firstName: 'Thomas', lastName: 'Williams', company: 'Yahoo', bio: 'I want to meet and help those new to the field.', email: 'thomas@email.com', password: '123456')
+thomas = User.create(username: 'tomwill', firstName: 'Thomas', lastName: 'Williams', company: 'Yahoo', bio: 'I want to meet and help those new to the field.', email: 'thomas@email.com', password: '123456')
 
-emily = User.create(firstName: 'Emily', lastName: 'Lee', company: 'Facebook', bio: 'Two years in the field but I want to learn more!', email: 'emily@email.com', password: '123456')
+emily = User.create(username: 'emilee', firstName: 'Emily', lastName: 'Lee', company: 'Facebook', bio: 'Two years in the field but I want to learn more!', email: 'emily@email.com', password: '123456')
 
-anna = User.create(firstName: 'Anna', lastName: 'Kim', company: 'Google', bio: 'Senior developer at Google. Excited to talk to new faces!', email: 'anna@email.com', password: '123456')
+anna = User.create(username: 'annakim', firstName: 'Anna', lastName: 'Kim', company: 'Google', bio: 'Senior developer at Google. Excited to talk to new faces!', email: 'anna@email.com', password: '123456')
 
-will = User.create(firstName: 'Will', lastName: 'Chou', company: 'Microsoft', bio: 'Developer at Microsoft.', email: 'will@email.com', password: '123456')
+will = User.create(username: 'willc', firstName: 'Will', lastName: 'Chou', company: 'Microsoft', bio: 'Developer at Microsoft.', email: 'will@email.com', password: '123456')
 
 Connection.create(follower_id: anna.id, followed_id: angela.id)
 
@@ -39,6 +39,6 @@ Post.create(user_id: emily.id, content: "Does anyone want to be my mentor?")
 
 Post.create(user_id: bob.id, content: "Today has been a stressful day. I keep running into bug after bug.")
 
-Message.create(sender_id: a.id, recipient_id: b.id, content: "Messaging working?")
+Message.create(sender_id: angela.id, recipient_id: bob.id, content: "Messaging working?")
 
 Message.create(sender_id: bob.id, recipient_id: angela.id, content: "Yes!")
