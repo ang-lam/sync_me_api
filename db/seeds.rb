@@ -23,6 +23,8 @@ Connection.create(follower_id: anna.id, followed_id: angela.id)
 
 Connection.create(follower_id: angela.id, followed_id: bob.id)
 
+Connection.create(follower_id: angela.id, followed_id: anna.id)
+
 Post.create(user_id: anna.id, content: "Learning a new social media is difficult...")
 
 Post.create(user_id: bob.id, content: "Don't hesitate to reach out to me and chat a bit!")
@@ -38,6 +40,10 @@ Post.create(user_id: angela.id, content: "I love this site!")
 Post.create(user_id: emily.id, content: "Does anyone want to be my mentor?")
 
 Post.create(user_id: bob.id, content: "Today has been a stressful day. I keep running into bug after bug.")
+
+Message.create!(sender_id: anna.id, recipient_id: angela.id, content: "Hey! How are you?")
+
+Message.create!(sender_id: angela.id, recipient_id: anna.id, content: "I'm good! What about you?")
 
 Message.create!(sender_id: angela.id, recipient_id: bob.id, content: "Messaging working?")
 
