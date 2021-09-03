@@ -39,6 +39,6 @@ Post.create(user_id: emily.id, content: "Does anyone want to be my mentor?")
 
 Post.create(user_id: bob.id, content: "Today has been a stressful day. I keep running into bug after bug.")
 
-Message.create(sender_id: angela.id, recipient_id: bob.id, content: "Messaging working?")
+Message.create!(sender_id: angela.id, recipient_id: bob.id, content: "Messaging working?")
 
-Message.create(sender_id: bob.id, recipient_id: angela.id, content: "Yes!")
+Message.create!(sender_id: bob.id, recipient_id: angela.id, content: "Yes!")

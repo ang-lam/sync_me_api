@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:create, :index]
+  resources :users, only: [:create, :index] do
+    # resources :messages
+    get '/inbox', to: "messages#inbox"
+  end
   resources :connections, only: [:index, :create]
   resources :messages, only: [:index, :create]
   resources :posts, only: [:index, :create]

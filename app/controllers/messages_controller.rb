@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  skip_before_action :require_login, only: [:index, :create, :delete]
+  skip_before_action :require_login, only: [:index, :create, :inbox]
 
   # GET /messages
   def index
@@ -17,6 +17,14 @@ class MessagesController < ApplicationController
     else
       render json: message.errors, status: :unprocessable_entity
     end
+  end
+
+  def inbox
+    user = User.find(params[:user_id])
+    users = user.messages.collect { |message| message.sender_id == user.id ? message.recipient : message.sender}
+    uniq_users = users.uniq
+
+    render json: uniq_users, include: :messages
   end
 
   private
